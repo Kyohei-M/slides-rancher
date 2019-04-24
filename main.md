@@ -44,20 +44,20 @@ layout: false
 
   - Kubernetes
 
-  - Cloud platform(e.g. AKS, GKE)
+  - Microsoft Azure
 
 ---
 ### Agenda
 
 - What is Rancher?
 
-- Get Started on Azure
+- Get Started
 
 - Manage Clusters
 
   - Add Clusters
 
-  - Deploy Wordpress from Catalog
+  - Deploy WordPress from Catalog
 
 ---
 class: center, middle, inverse-red
@@ -70,7 +70,7 @@ class: header-margin
 .left-large[
 - Container packaging and runtime standard
 
-- Build container images from Dockerfiles
+- Build container images from Dockerfiles(IaC)
 
 - Distribute container images from Docker registries
 ]
@@ -83,11 +83,11 @@ class: header-margin
 ### Kubernetes
 
 .left-large[
-- Container cluster management standard
+- Container orchestration standard
 
-- Open source software
+- Manage resources as manifest files(IaC)
 
-- Cloud Native Computing Foundation(CNCF) hosts
+- OSS which CNCF hosts (Graduated)
 ]
 
 
@@ -148,17 +148,8 @@ class: header-margin
 <center><img src="https://rancher.com/docs/img/rancher/rancher-architecture.png" width=90%></center>
 
 ---
-### Architecture
-
-- Rancher API Server
-
-- Cluster Controller and Agents
-
-- Authentication Proxy
-
----
 class: center, middle, inverse-red
-## Get Started on Azure
+## Get Started
 
 ---
 ### Installation
@@ -223,9 +214,11 @@ $ sudo docker run -d --restart=unless-stopped -p 80:80 \
 ---
 ### Access to VM
 
+.zoom1[
 ```yaml
 https://[IP address of VM]
 ```
+]
 
 <center><img src="welcome-rancher.png" width=100%></center>
 
@@ -255,7 +248,7 @@ class: center, middle, inverse-red
 
   - AKS
 
-- Deploy Wordpress from Catalog
+- Deploy WordPress from Catalog
 
 ---
 class: center, middle, red
@@ -285,6 +278,7 @@ class: header-margin
 <center><img src="custom.png" width=100%></center>
 
 ---
+class: header-margin
 ### Set IPs of VM
 
 <center><img src="custom2.png" width=90%></center>
@@ -335,9 +329,11 @@ class: center, middle, red
 
 - Create a new resource group for AKS
 
+.zoom1[
 ```yaml
 rancher-aks-sample
 ```
+]
 
 - Create a service principal
 
@@ -367,9 +363,9 @@ $ az provider register -n Microsoft.OperationalInsights
 
 $ az provider register -n Microsoft.OperationsManagement
 ```
-]
 
 <u><https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors></u>
+]
 
 ---
 class: header-margin
@@ -415,7 +411,7 @@ class: header-margin
 
 ---
 class: center, middle, red
-### Deploy Wordpress from Catalog
+### Deploy WordPress from Catalog
 
 ---
 class: header-margin
@@ -425,7 +421,7 @@ class: header-margin
 
 ---
 class: header-margin
-### Select Wordpress
+### Select WordPress
 
 <center><img src="deploy-custom2.png" width=100%></center>
 
@@ -438,7 +434,7 @@ class: header-margin
 
 ---
 class: header-margin
-### Done :)
+### Launch
 
 <center><img src="deploy-custom3.png" width=100%></center>
 
@@ -459,18 +455,83 @@ class: header-margin
 ---
 ### Deploy on AKS Cluster
 
+- Deploy WordPress without L7 Load Balancer
+
+<center><img src="deploy-aks.png" width=100%></center>
+
+---
+class: header-margin
+### Because...
+
+<center><img src="lb-sp.png" width=100%></center>
+
+---
+### Need to deploy LB on Azure
+
+- Deploy nginx-ingress with helm(by default)
+
+- Deploy wordpress-ingress.yaml
+
+.zoom0[
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: wordpress-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: wordpress-wordpress
+          servicePort: 80
+```
+]
+
+---
+class: header-margin
+### Access to Public IP
+
+<center><img src="wp.png" width=100%></center>
+
+---
+### What I Felt
+
+- Catalog is useful
+
+  - Can deploy many applications on GUI
+
+- Cluster management is not so easy...
+
+  - Not a few things we have to know
+
+  - But probably easier to manage multi-clusters on different platforms
+
+---
+class: center, middle, red
+# Thank you!
+
 ---
 ### Links
 
-.zoom1[
+.zoom2[
 マルチクラウド時代の最強コンビ　RancherによるKubernetes活用ガイド  
 <u><https://thinkit.co.jp/series/8740></u>
 
 Official - Rancher 2.x  
 <u><https://rancher.com/docs/rancher/v2.x/en/></u>
-
 ]
 
 ---
-class: center, middle, red
-## Thank you!
+### Actually, everything is here...
+
+.zoom2[
+Azure with Rancher !!  
+<u><https://speakerdeck.com/cyberblack28/azure-with-rancher></u>
+
+]
