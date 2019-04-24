@@ -1,13 +1,8 @@
-name: inverse
-layout: true
-class: center, middle, inverse-red
-
----
+class: center, middle, background-rancher
 ## Multi-Cluster Management with Rancher
 
 ---
 exclude: true
-layout: false
 ### whoami
 
 .left-small[
@@ -26,7 +21,6 @@ layout: false
 ]
 
 ---
-layout: false
 ### Target
 
 - People who:
@@ -60,7 +54,7 @@ layout: false
   - Deploy WordPress from Catalog
 
 ---
-class: center, middle, inverse-red
+class: center, middle, background-rancher
 ## What is Rancher?
 
 ---
@@ -148,7 +142,7 @@ class: header-margin
 <center><img src="https://rancher.com/docs/img/rancher/rancher-architecture.png" width=90%></center>
 
 ---
-class: center, middle, inverse-red
+class: center, middle, background-rancher
 ## Get Started
 
 ---
@@ -236,7 +230,7 @@ class: header-margin
 <center><img src="portal.png" width=100%></center>
 
 ---
-class: center, middle, inverse-red
+class: center, middle, background-rancher
 ## Manage Clusters
 
 ---
@@ -251,7 +245,7 @@ class: center, middle, inverse-red
 - Deploy WordPress from Catalog
 
 ---
-class: center, middle, red
+class: center, middle, blue
 ## Create Custom Cluster
 
 ---
@@ -321,7 +315,7 @@ class: header-margin
 <center><img src="custom6.png" width=100%></center>
 
 ---
-class: center, middle, red
+class: center, middle, blue
 ## Create AKS Cluster
 
 ---
@@ -389,7 +383,7 @@ class: header-margin
 <center><img src="aks3.png" width=100%></center>
 
 ---
-class: center, middle, red
+class: center, middle, blue
 ## But...
 
 ---
@@ -410,7 +404,7 @@ class: header-margin
 <u><https://github.com/rancher/rancher/issues/11496></u>
 
 ---
-class: center, middle, red
+class: center, middle, blue
 ### Deploy WordPress from Catalog
 
 ---
@@ -513,7 +507,7 @@ class: header-margin
   - But probably easier to manage multi-clusters on different platforms
 
 ---
-class: center, middle, red
+class: center, middle, blue
 # Thank you!
 
 ---
