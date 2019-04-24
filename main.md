@@ -496,18 +496,18 @@ class: header-margin
 ---
 ### What I Felt
 
-- Catalog is useful
+- Good for cluster management
 
   - Can deploy many applications on GUI
 
-- Cluster management is not so easy...
+  - Can start monitoring & logging on GUI
 
-  - Not a few things we have to know
+- Not a few things we have to know
 
-  - But probably easier to manage multi-clusters on different platforms
+  - But useful to manage multi-clusters on different platforms
 
 ---
-class: center, middle, blue
+class: center, middle, background-rancher
 # Thank you!
 
 ---
