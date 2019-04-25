@@ -2,7 +2,6 @@ class: center, middle, background-rancher
 ## Multi-Cluster Management with Rancher
 
 ---
-exclude: true
 ### whoami
 
 .left-small[
